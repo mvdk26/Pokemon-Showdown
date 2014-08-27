@@ -373,7 +373,7 @@ exports.BattleStatuses = {
 
 	raindance: {
 		effectType: 'Weather',
-		duration: 5,
+		duration: 0,
 		durationCallback: function (source, effect) {
 			if (source && source.item === 'damprock') {
 				return 8;
