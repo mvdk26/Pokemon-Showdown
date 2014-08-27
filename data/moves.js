@@ -2341,23 +2341,7 @@ exports.BattleMovedex = {
 		target: "any",
 		type: "Dark"
 	},
-	"darkvoid": {
-		num: 464,
-		accuracy: 80,
-		basePower: 0,
-		category: "Status",
-		desc: "Puts all adjacent foes to sleep. Pokemon protected by Magic Coat or the Ability Magic Bounce are unaffected and instead use this move themselves.",
-		shortDesc: "Puts the foe(s) to sleep.",
-		id: "darkvoid",
-		isViable: true,
-		name: "Dark Void",
-		pp: 10,
-		priority: 0,
-		status: 'slp',
-		secondary: false,
-		target: "allAdjacentFoes",
-		type: "Dark"
-	},
+
 	"dazzlinggleam": {
 		num: 605,
 		accuracy: 100,
@@ -3921,8 +3905,8 @@ exports.BattleMovedex = {
 	},
 	"fireblast": {
 		num: 126,
-		accuracy: 85,
-		basePower: 110,
+		accuracy: 80,
+		basePower: 120,
 		category: "Special",
 		desc: "Deals damage to one adjacent target with a 10% chance to burn it.",
 		shortDesc: "10% chance to burn the target.",
@@ -6464,7 +6448,7 @@ exports.BattleMovedex = {
 	"hydropump": {
 		num: 56,
 		accuracy: 80,
-		basePower: 110,
+		basePower: 120,
 		category: "Special",
 		desc: "Deals damage to one adjacent target.",
 		shortDesc: "No additional effect.",
@@ -7129,7 +7113,7 @@ exports.BattleMovedex = {
 	"knockoff": {
 		num: 282,
 		accuracy: 100,
-		basePower: 65,
+		basePower: 30,
 		category: "Physical",
 		desc: "Deals damage to one adjacent target and causes it to drop its held item. Does 50% more damage if the target is holding an item. This move cannot force Pokemon with the Ability Sticky Hold to lose their held item, or force a Giratina, an Arceus, a Genesect, or a pokémon able to Mega-evolve to lose their Griseous Orb, Plate, Drive, or Mega Stone respectively. Items lost to this move cannot be regained with Recycle. Makes contact.",
 		shortDesc: "1.5x damage if foe holds an item. Removes item.",
@@ -7306,7 +7290,7 @@ exports.BattleMovedex = {
 	},
 	"leechseed": {
 		num: 73,
-		accuracy: 90,
+		accuracy: 100,
 		basePower: 0,
 		category: "Status",
 		desc: "The Pokemon at the user's position steals 1/8 of one adjacent target's max HP, rounded down, at the end of each turn. If Big Root is held by the recipient, the HP recovered is 1.3x normal, rounded half down. If the target uses Baton Pass, the replacement will continue being leeched. If the target switches out or uses Rapid Spin, the effect ends. Grass-types are unaffected. Pokemon protected by Magic Coat or the Ability Magic Bounce are unaffected and instead use this move themselves.",
@@ -9124,7 +9108,7 @@ exports.BattleMovedex = {
 		},
 		secondary: false,
 		target: "randomNormal",
-		type: "Dragon"
+		type: "Fire"
 	},
 	"overheat": {
 		num: 315,
@@ -11260,8 +11244,8 @@ exports.BattleMovedex = {
 	},
 	"scald": {
 		num: 503,
-		accuracy: 100,
-		basePower: 80,
+		accuracy: 50,
+		basePower: 100,
 		category: "Special",
 		desc: "Deals damage to one adjacent target with a 30% chance to burn it. If the user is frozen, it thaws out just before attacking.",
 		shortDesc: "30% chance to burn the target. Thaws user.",
@@ -11273,7 +11257,7 @@ exports.BattleMovedex = {
 		thawsUser: true,
 		thawsTarget: true,
 		secondary: {
-			chance: 30,
+			chance: 100,
 			status: 'brn'
 		},
 		target: "normal",
@@ -13780,8 +13764,8 @@ exports.BattleMovedex = {
 	},
 	"thunder": {
 		num: 87,
-		accuracy: 70,
-		basePower: 110,
+		accuracy: 80,
+		basePower: 120,
 		category: "Special",
 		desc: "Deals damage to one adjacent target with a 30% chance to paralyze it. This move can hit a target using Bounce, Fly, or Sky Drop. If the weather is Rain Dance, this move cannot miss. If the weather is Sunny Day, this move's accuracy is 50%.",
 		shortDesc: "30% chance to paralyze target. Can't miss in rain.",
@@ -13979,7 +13963,7 @@ exports.BattleMovedex = {
 	},
 	"toxic": {
 		num: 92,
-		accuracy: 90,
+		accuracy: 100,
 		basePower: 0,
 		category: "Status",
 		desc: "Badly poisons one adjacent target. Pokemon protected by Magic Coat or the Ability Magic Bounce are unaffected and instead use this move themselves.",
@@ -14890,7 +14874,7 @@ exports.BattleMovedex = {
 	},
 	"willowisp": {
 		num: 261,
-		accuracy: 85,
+		accuracy: 100,
 		basePower: 0,
 		category: "Status",
 		desc: "Burns one adjacent target. Pokemon protected by Magic Coat or the Ability Magic Bounce are unaffected and instead use this move themselves.",
