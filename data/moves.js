@@ -10547,41 +10547,48 @@ exports.BattleMovedex = {
 		target: "self",
 		type: "Normal"
 	},
-	"relicsong": {
-		num: 547,
-		accuracy: 100,
-		basePower: 75,
-		category: "Special",
-		desc: "Deals damage to all adjacent foes with a 10% chance to put each to sleep. If this move is successful on at least one foe and the user is a Meloetta, it changes to the Pirouette Forme if it is currently in Aria Forme, or changes to Aria Forme if it is currently in Pirouette Forme. The Pirouette Forme reverts to Aria Forme when Meloetta is not active. Pokemon with the Ability Soundproof are immune.",
-		shortDesc: "10% chance to sleep foe(s). Meloetta transforms.",
-		id: "relicsong",
-		isViable: true,
-		name: "Relic Song",
-		pp: 10,
-		priority: 0,
-		isSoundBased: true,
-		secondary: {
-			chance: 10,
-			status: 'slp'
-		},
-		onHit: function (target, pokemon) {
-			if (pokemon.baseTemplate.species === 'Meloetta' && !pokemon.transformed) {
-				pokemon.addVolatile('relicsong');
-			}
-		},
-		effect: {
-			duration: 1,
-			onAfterMoveSecondarySelf: function (pokemon, target, move) {
-				if (pokemon.template.speciesid === 'meloettapirouette' && pokemon.formeChange('Meloetta')) {
-					this.add('-formechange', pokemon, 'Meloetta');
-				} else if (pokemon.formeChange('Meloetta-Pirouette')) {
-					this.add('-formechange', pokemon, 'Meloetta-Pirouette');
-				}
-				pokemon.removeVolatile('relicsong');
-			}
-		},
-		target: "allAdjacentFoes",
-		type: "Normal"
+	relicsong: {
+	inherit: true,
+	basePower: 60,
+	affectedByImmunities: false,
+	onHit: function (target, pokemon) {
+	if (pokemon.baseTemplate.species !== 'Meloetta' || pokemon.transformed) {
+	return;
+	}
+	var natureChange = {
+	'Modest': 'Adamant',
+	'Adamant': 'Modest',
+	'Timid': 'Jolly',
+	'Jolly': 'Timid'
+	};
+	if (pokemon.template.speciesid === 'meloettapirouette' && pokemon.formeChange('Meloetta')) {
+	this.add('-formechange', pokemon, 'Meloetta');
+	var tmpAtkEVs = pokemon.set.evs.atk;
+	pokemon.set.evs.atk = pokemon.set.evs.spa;
+	pokemon.set.evs.spa = tmpAtkEVs;
+	if (natureChange[pokemon.set.nature]) pokemon.set.nature = natureChange[pokemon.set.nature];
+	var Atk2SpA = (pokemon.boosts.spa || 0) - (pokemon.boosts.atk || 0);
+	this.boost({
+	atk: Atk2SpA,
+	spa: -Atk2SpA
+	}, pokemon);
+	} else if (pokemon.formeChange('Meloetta-Pirouette')) {
+	this.add('-formechange', pokemon, 'Meloetta-Pirouette');
+	var tmpAtkEVs = pokemon.set.evs.atk;
+	pokemon.set.evs.atk = pokemon.set.evs.spa;
+	pokemon.set.evs.spa = tmpAtkEVs;
+	if (natureChange[pokemon.set.nature]) pokemon.set.nature = natureChange[pokemon.set.nature];
+	var Atk2SpA = (pokemon.boosts.spa || 0) - (pokemon.boosts.atk || 0);
+	this.boost({
+	atk: Atk2SpA,
+	spa: -Atk2SpA
+	}, pokemon);
+	}
+	// renderer takes care of this for us
+	pokemon.transformed = false;
+	},
+	priority: 1,
+	secondary: null
 	},
 	"rest": {
 		num: 156,
